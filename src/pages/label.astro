@@ -1,0 +1,12 @@
+---
+export const prerender = false;
+
+import LabelInfo from "../components/LabelDetail.astro";
+import Layout from "../layouts/Layout.astro";
+const referrer = Astro.request.headers.get("referer");
+console.log(referrer);
+---
+
+<Layout>
+  <LabelInfo />
+</Layout>

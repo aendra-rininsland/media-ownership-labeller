@@ -2,16 +2,7 @@
 import background from "../assets/background.svg";
 import Labels from "./Labels.jsx";
 import Papa from "papaparse";
-type D = {
-  handle: string;
-  name: string;
-  did: string;
-  uri: string;
-  dbpedia_query: string;
-  manual_entry: string;
-  notes: string;
-  additional_domains: string;
-};
+import type { D } from "../../types";
 
 const uri =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQY4KHOpjrtxzrhA3zL5_Qfk9zlnhLJCT_CGruX6y-4-OXYdZbdIsmDTDw7VR_9q2KI_G5kgcIdskpD/pub?output=csv";
