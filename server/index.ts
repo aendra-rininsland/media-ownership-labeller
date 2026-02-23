@@ -48,7 +48,7 @@ jetstream.onCreate("app.bsky.feed.post", async (event) => {
     const domain = uri.hostname.split(".").slice(-2).join(".");
     const subject = `at://${event.did}/${event.commit.collection}/${event.commit.rkey}`;
     const hit = domains.get(domain);
-    if (hit) {
+    if (hit && hit.label) {
       await server.createLabel({
         /** The label value. */
         val: hit.label,
@@ -81,6 +81,10 @@ jetstream.onCreate("app.bsky.feed.post", async (event) => {
         /** The expiration date of the label, if any. Must be in ISO 8601 format. */
         // exp?: string | undefined;
       });
+    }
+
+    if (hit && !hit.label) {
+      console.error(hit);
     }
   }
 });
