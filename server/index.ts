@@ -65,6 +65,22 @@ jetstream.onCreate("app.bsky.feed.post", (event) => {
         /** The expiration date of the label, if any. Must be in ISO 8601 format. */
         // exp?: string | undefined;
       });
+      console.info({
+        /** The label value. */
+        val: hit.label,
+        /** The subject of the label. If labeling an account, this should be a string beginning with `did:`. */
+        uri: subject,
+        /** Optionally, a CID specifying the version of `uri` to label. */
+        cid: event.commit.cid,
+        /** Whether this label is negating a previous instance of this label applied to the same subject. */
+        neg: false,
+        /** The DID of the actor who created this label, if different from the labeler. */
+        // src?: string | undefined;
+        /** The creation date of the label. Must be in ISO 8601 format. */
+        cts: new Date().toISOString(),
+        /** The expiration date of the label, if any. Must be in ISO 8601 format. */
+        // exp?: string | undefined;
+      });
     }
   }
 });
