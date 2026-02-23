@@ -39,7 +39,7 @@ const jetstream = new Jetstream({
 
 jetstream.start();
 
-jetstream.onCreate("app.bsky.feed.post", (event) => {
+jetstream.onCreate("app.bsky.feed.post", async (event) => {
   if (
     event.commit.record.embed &&
     event.commit.record.embed.$type === "app.bsky.embed.external"
@@ -49,7 +49,7 @@ jetstream.onCreate("app.bsky.feed.post", (event) => {
     const subject = `at://${event.did}/${event.commit.collection}/${event.commit.rkey}`;
     const hit = domains.get(domain);
     if (hit) {
-      server.createLabel({
+      await server.createLabel({
         /** The label value. */
         val: hit.label,
         /** The subject of the label. If labeling an account, this should be a string beginning with `did:`. */
