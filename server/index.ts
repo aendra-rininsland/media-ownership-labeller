@@ -55,7 +55,7 @@ jetstream.onCreate("app.bsky.feed.post", async (event) => {
         /** The subject of the label. If labeling an account, this should be a string beginning with `did:`. */
         uri: subject,
         /** Optionally, a CID specifying the version of `uri` to label. */
-        cid: event.commit.cid,
+        // cid: event.commit.cid,
         /** Whether this label is negating a previous instance of this label applied to the same subject. */
         neg: false,
         /** The DID of the actor who created this label, if different from the labeler. */
